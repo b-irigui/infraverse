@@ -24,5 +24,6 @@ jobs:
             --max-retries 3
             --accept 200,206,403,429
             --exclude-path .git
+            --exclude 'github\.com/[^/]+/[^/]+/(stargazers|network/members)'
             './**/*.md'
           fail: true
