@@ -1,18 +1,25 @@
-In CircleCI, the hosts/executors on which a pipeline is executed, is called a runner.<br>
-You reference a runner on a job in the file `.circleci/config.yml` like this:
+# CircleCI: run a job on a specific machine
 
-```
+In CircleCI, a job runs on an **executor** (`docker`, `machine`, `macos`, …). The size and type of machine is set with `resource_class`.
+
+To run a job on **your own infrastructure**, install a **self-hosted runner** and point the job's `resource_class` at the runner's namespace/name:
+
+```yaml
 version: 2.1
+
 workflows:
   testing:
     jobs:
-      - runner
+      - runner-test
+
 jobs:
-  runner:
+  runner-test:
     machine: true
-    resource_class: your-namespace/your-resource
+    resource_class: your-namespace/your-resource-class
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - run: echo "Hi, I'm running on a self-hosted runner!"
 ```
 
-The above example is taken from [CircleCI docs](https://circleci.com/docs/2.0/runner-overview/?section=executors-and-images)
+📖 Docs: [CircleCI documentation](https://circleci.com/docs/) (see *Self-hosted runners* and *Configuring a resource class*)
+
+[⬅ Back to Infraverse](../../README.md#cicd)

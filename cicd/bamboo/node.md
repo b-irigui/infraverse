@@ -1,7 +1,13 @@
-In Bamboo, the term "agent" describes the place where a job will be executed. It can be one of three:
+# Bamboo: run a job on a specific agent
 
-1. Local
-2. Remote
-3. EC2 (AWS)
+In Bamboo, the place where a job executes is called an **agent**. There are three kinds:
 
-By default any job will run on available agents. To dedicate specific agents, follow this [guide](https://confluence.atlassian.com/bamboo/dedicating-an-agent-629015108.html)
+1. **Local agents** – run on the Bamboo server itself
+2. **Remote agents** – run on separate machines and connect to the server
+3. **Elastic agents** – on-demand Amazon EC2 instances
+
+By default, a job runs on any available agent whose **capabilities** satisfy the job's **requirements** (for example, a specific JDK or executable). To pin a job to particular machines, either add a custom requirement that only those agents have, or **dedicate** the agents to the plan or job.
+
+📖 Docs: [Bamboo agents and capabilities](https://confluence.atlassian.com/bamboo/agents-and-capabilities-289277114.html) · [Dedicating an agent](https://confluence.atlassian.com/bamboo/dedicating-an-agent-629015108.html)
+
+[⬅ Back to Infraverse](../../README.md#cicd)

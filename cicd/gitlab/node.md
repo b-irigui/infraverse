@@ -1,12 +1,19 @@
-In Gitlab nodes on which pipelines are executed, are called "Runners".
+# GitLab CI: run a job on a specific runner
 
-There are shared runners and specific runners. When setting up a shared runner, your pipeline will automatically use that pipeline by default.<br>
-In order to limit a pipeline to a specific runner, you need to use tags. This is how it looks:
+In GitLab, the machines that execute jobs are called **runners**. They can be **instance** runners (shared by every project), **group** runners or **project** runners.
 
-```
-job:
+If shared runners are enabled, jobs are picked up by any available runner. To send a job to a specific runner, give the runner one or more **tags** and reference them in `.gitlab-ci.yml`:
+
+```yaml
+build:
   tags:
     - docker
+  script:
+    - make
 ```
 
-The pipeline will run only on runners tagged with `docker`.
+The job will only run on runners tagged with `docker`. If you list several tags, the runner must have **all** of them.
+
+📖 Docs: [GitLab Runner](https://docs.gitlab.com/runner/) · [`tags` keyword](https://docs.gitlab.com/ci/yaml/#tags)
+
+[⬅ Back to Infraverse](../../README.md#cicd)
